@@ -1,0 +1,29 @@
+{
+  "name": "cypress-automation-template",
+  "version": "1.0.0",
+  "description": "A comprehensive Cypress automation framework template with Page Object Model, API testing capabilities, and utility functions for efficient test automation.",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress:run:headed": "cypress run --headed",
+    "test:e2e": "cypress run --spec 'cypress/e2e/**/*.cy.js'",
+    "test:api": "cypress run --spec 'cypress/e2e/**/*.cy.js' --env type=api",
+    "test:ui": "cypress run --spec 'cypress/e2e/**/*.cy.js' --env type=ui"
+  },
+  "keywords": [
+    "cypress",
+    "automation",
+    "testing",
+    "api",
+    "e2e",
+    "page-object-model",
+    "template"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "cypress": "^14.5.2"
+  }
+}
