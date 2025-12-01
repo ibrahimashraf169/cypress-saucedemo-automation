@@ -1,0 +1,19 @@
+{
+  "validUser": {
+    "email": "standard_user",
+    "password": "secret_sauce",
+    "name": "test"
+  },
+  "invalidUser": {
+    "email": "test@test.com",
+    "password": "invalid",
+    "expectedError": "Bad credentials"
+  },
+  "emptyFields": {
+    "email": "",
+    "password": "",
+    "emailError": "Please input your email!",
+    "passwordError": "Please input your password!"
+  }
+}
+

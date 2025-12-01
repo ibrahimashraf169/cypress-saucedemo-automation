@@ -1,4 +1,4 @@
-export class DataHelper {
+export class DataGenerator {
   // Generate random email with timestamp
   static randomEmail() {
     const timestamp = Date.now();
@@ -39,3 +39,4 @@ export class DataHelper {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 }
+

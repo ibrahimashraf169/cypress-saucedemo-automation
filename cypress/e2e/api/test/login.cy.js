@@ -1,4 +1,4 @@
-import { AuthPage } from "../apiPages/authPage";
+import { AuthPage } from "../pages/auth.page";
 
 describe("Authentication API Tests", () => {
   it("should authenticate user successfully", () => {
@@ -16,3 +16,4 @@ describe("Authentication API Tests", () => {
     });
   });
 });
+

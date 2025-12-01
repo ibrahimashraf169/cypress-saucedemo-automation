@@ -19,7 +19,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    baseUrl: "", //Add Your Website URL Here "https://your-app.com" like this
+    baseUrl: "https://www.saucedemo.com", //Add Your Website URL Here "https://your-app.com" like this
     experimentalStudio: true, // This is for Cypress Studio (GUI Testing)"Screen Recording For Your Tests"
     testIsolation: true, // This is for Isolation of Tests (Each Test Runs in a Separate Browser)"Each Test Runs in a Separate Browser"
     retries: {
