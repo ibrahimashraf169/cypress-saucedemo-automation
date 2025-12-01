@@ -11,6 +11,7 @@ The framework follows **Page Object Model (POM)** design pattern and adheres to 
 - Clear naming conventions for variables, functions, and classes
 - Externalized test data using fixtures (not hardcoded)
 - Consistent kebab-case file naming convention
+- Centralized selectors for easy maintenance
 
 ## Requirements
 
@@ -23,8 +24,10 @@ The framework follows **Page Object Model (POM)** design pattern and adheres to 
 
 1. **User Login**
    - Successful login with valid credentials
-   - Error messages for invalid login attempts
-   - Validation for empty username/password fields
+   - Error message for invalid credentials
+   - Error message for locked out user
+   - Validation for empty username field
+   - Validation for empty password field
 
 2. **Product Navigation**
    - Navigate from product listing to product details page
@@ -49,6 +52,7 @@ The framework follows **Page Object Model (POM)** design pattern and adheres to 
 cypress-project/
 │── cypress.config.js          # Cypress configuration
 │── package.json               # npm dependencies
+│── .gitignore                 # Git ignore rules
 │── README.md
 │
 ├── cypress/
@@ -99,12 +103,22 @@ cypress-project/
 └── node_modules/              # Dependencies
 ```
 
+## Test Cases
+
+| Test File | Test Cases | Description |
+|-----------|------------|-------------|
+| `login.cy.js` | 5 | Valid login, invalid credentials, locked user, empty username, empty password |
+| `products.cy.js` | 1 | Product navigation to details page |
+| `product-details.cy.js` | 1 | Add to cart and navigate to cart |
+| `cart.cy.js` | 1 | Checkout navigation from cart |
+| `end-to-end.cy.js` | 1 | Complete purchase flow |
+
 ## Setup Instructions
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd cypress-project
+   git clone https://github.com/ibrahimashraf169/cypress-saucedemo-automation.git
+   cd cypress-saucedemo-automation
    ```
 
 2. Install dependencies:
@@ -122,6 +136,15 @@ cypress-project/
    npx cypress open
    ```
 
+## npm Scripts
+
+```bash
+npm run cypress:open       # Open Cypress Test Runner
+npm run cypress:run        # Run tests headless
+npm run cypress:run:headed # Run tests with browser visible
+npm run test:e2e           # Run all e2e tests
+```
+
 ---
 
 ✅ Test data is managed in **fixtures/** folder (JSON files) so it can be updated easily without modifying test scripts.
@@ -131,3 +154,5 @@ cypress-project/
 ✅ Custom commands (`cy.login()`, `cy.loginAsValidUser()`) eliminate repetitive login code across tests.
 
 ✅ Selectors are centralized in separate files for easy maintenance.
+
+✅ Screenshots and videos are automatically captured on test failures.

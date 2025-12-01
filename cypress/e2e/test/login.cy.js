@@ -11,7 +11,7 @@ describe("Login Page - User Authentication", () => {
 
   it("should redirect to inventory page when user enters valid credentials", () => {
     LoginPage.visit();
-    LoginPage.enterUsername(data.validUser.email);
+    LoginPage.enterUsername(data.validUser.username);
     LoginPage.enterPassword(data.validUser.password);
     LoginPage.clickLogin();
     cy.url().should("include", "/inventory.html");
@@ -19,23 +19,33 @@ describe("Login Page - User Authentication", () => {
 
   it("should display error message when user enters invalid credentials", () => {
     LoginPage.visit();
-    LoginPage.enterUsername(data.invalidUser.email);
+    LoginPage.enterUsername(data.invalidUser.username);
     LoginPage.enterPassword(data.invalidUser.password);
     LoginPage.clickLogin();
-    cy.get(".error-message-container ").should(
-      "contain",
-      "Epic sadface: Username and password do not match any user in this service"
-    );
+    LoginPage.verifyErrorMessage(data.invalidUser.expectedError);
   });
 
-  it("should display error message when username and password fields are empty", () => {
+  it("should display error message when locked out user tries to login", () => {
     LoginPage.visit();
-    LoginPage.enterUsername(data.emptyFields.email);
+    LoginPage.enterUsername(data.lockedOutUser.username);
+    LoginPage.enterPassword(data.lockedOutUser.password);
+    LoginPage.clickLogin();
+    LoginPage.verifyErrorMessage(data.lockedOutUser.expectedError);
+  });
+
+  it("should display error message when username field is empty", () => {
+    LoginPage.visit();
+    LoginPage.enterUsername(data.emptyFields.username);
+    LoginPage.enterPassword(data.validUser.password);
+    LoginPage.clickLogin();
+    LoginPage.verifyErrorMessage(data.emptyFields.usernameError);
+  });
+
+  it("should display error message when password field is empty", () => {
+    LoginPage.visit();
+    LoginPage.enterUsername(data.validUser.username);
     LoginPage.enterPassword(data.emptyFields.password);
     LoginPage.clickLogin();
-    cy.get(".error-message-container ").should(
-      "contain",
-      "Epic sadface: Username is required"
-    );
+    LoginPage.verifyErrorMessage(data.emptyFields.passwordError);
   });
 });

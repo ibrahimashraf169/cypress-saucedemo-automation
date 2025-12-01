@@ -1,31 +1,51 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  numTestsKeptInMemory: 15,
-  defaultCommandTimeout: 150000,
+  // Performance settings
+  numTestsKeptInMemory: 10,
+  
+  // Timeouts (in milliseconds)
+  defaultCommandTimeout: 10000,  // 10 seconds - reasonable for most commands
+  pageLoadTimeout: 30000,        // 30 seconds for page loads
+  requestTimeout: 10000,         // 10 seconds for API requests
+  responseTimeout: 30000,        // 30 seconds for API responses
+  
+  // Viewport
   viewportHeight: 768,
   viewportWidth: 1400,
+  
+  // Development settings
   watchForFileChanges: false,
-  pageLoadTimeout: 60000,
-  requestTimeout: 30000,
-  responseTimeout: 30000,
+  
+  // Screenshots and Videos
+  screenshotOnRunFailure: true,
+  video: true,
+  videosFolder: "cypress/videos",
+  screenshotsFolder: "cypress/screenshots",
+  
+  // Environment variables
   env: {
-    apiUrl: "", //Add Your API URLHere "https://your-api.com" like this
+    apiUrl: "",
     apiTimeout: 30000,
-    retryAttempts: 2,
   },
 
   e2e: {
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
-    baseUrl: "https://www.saucedemo.com", //Add Your Website URL Here "https://your-app.com" like this
-    experimentalStudio: true, // This is for Cypress Studio (GUI Testing)"Screen Recording For Your Tests"
-    testIsolation: true, // This is for Isolation of Tests (Each Test Runs in a Separate Browser)"Each Test Runs in a Separate Browser"
+    baseUrl: "https://www.saucedemo.com",
+    specPattern: "cypress/e2e/**/*.cy.js",
+    supportFile: "cypress/support/e2e.js",
+    testIsolation: true,
+    experimentalStudio: true,
+    chromeWebSecurity: false,
+    
+    // Retries on failure
     retries: {
       runMode: 2,
       openMode: 0,
     },
-    chromeWebSecurity: false,
+    
+    setupNodeEvents(on, config) {
+      // Node event listeners can be added here
+      return config;
+    },
   },
 });

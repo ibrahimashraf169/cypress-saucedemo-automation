@@ -24,5 +24,17 @@ export class LoginPage {
   static clickLogin() {
     cy.get(LoginSelectors.loginButton).click();
   }
+
+  static getErrorMessage() {
+    return cy.get(LoginSelectors.errorMessage);
+  }
+
+  static verifyErrorMessage(expectedMessage) {
+    this.getErrorMessage().should("contain", expectedMessage);
+  }
+
+  static closeErrorMessage() {
+    cy.get(LoginSelectors.errorButton).click();
+  }
 }
 

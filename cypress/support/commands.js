@@ -23,6 +23,6 @@ Cypress.Commands.add("login", (username, password) => {
  */
 Cypress.Commands.add("loginAsValidUser", () => {
   cy.fixture("test-data").then((data) => {
-    cy.login(data.validUser.email, data.validUser.password);
+    cy.login(data.validUser.username, data.validUser.password);
   });
 });
