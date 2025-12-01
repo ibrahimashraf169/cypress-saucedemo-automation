@@ -57,11 +57,6 @@ cypress-project/
 │
 ├── cypress/
 │   ├── e2e/                   # Test files
-│   │   ├── api/
-│   │   │   ├── pages/
-│   │   │   │   └── auth.page.js
-│   │   │   └── test/
-│   │   │       └── login.cy.js
 │   │   └── test/
 │   │       ├── cart.cy.js
 │   │       ├── end-to-end.cy.js
@@ -88,17 +83,9 @@ cypress-project/
 │   │   ├── product-details.selectors.js
 │   │   └── product.selectors.js
 │   │
-│   ├── support/
-│   │   ├── commands.js        # Custom Cypress commands
-│   │   └── e2e.js             # Global configuration
-│   │
-│   └── utils/                 # Utility functions
-│       ├── api/
-│       │   ├── api-helper.js
-│       │   └── endpoints.js
-│       ├── data-generator.js
-│       ├── route-parameters.js
-│       └── wait-commands.js
+│   └── support/
+│       ├── commands.js        # Custom Cypress commands
+│       └── e2e.js             # Global configuration
 │
 └── node_modules/              # Dependencies
 ```
