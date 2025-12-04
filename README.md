@@ -1,4 +1,4 @@
-# Web Automation Technical Assessment - Sauce Demo
+# Web Automation Task - Sauce Demo
 
 ## Overview
 
